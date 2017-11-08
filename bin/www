@@ -7,6 +7,7 @@
 let app = require('../app');
 let debug = require('debug')('demo:server');
 let http = require('http');
+let db = require('../db')
 
 console.log("process.env.NODE_ENV=" + process.env.NODE_ENV);
 /**
@@ -83,6 +84,7 @@ function onError(error) {
  */
 
 function onListening() {
+  db();
   let addr = server.address();
   let bind = typeof addr === 'string'
     ? 'pipe ' + addr
