@@ -9,11 +9,12 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-generic-session')
 const MongoStore = require('koa-generic-session-mongo');
-const index = require('./routes/index')
+const person = require('./routes/person')
 const users = require('./routes/users')
+const personProject = require('./routes/personProject')
 
 const cas = require('@zz-nodejs/koa-cas').newSingleInstance({isTest: true})
-
+const bsp = require('@zz-nodejs/node-bsp').newSingleInstance({isTest: true, appKey: 'xxx', appSecret: 'xxxx'})
 
 /**
  * md5 加密字符串
@@ -32,6 +33,13 @@ app.use(session({
   key:'test.58.nodejs.koa.cas',
 }));
 
+bsp.getUsersByUserName('wangshu02')
+.then(user => {
+  console.log(user)
+})
+.catch(err => {
+  console.error(err)
+})
 // app.use(async function (ctx, next) {
 //       console.log(ctx)
 //       // 处理单一登出。
@@ -131,7 +139,8 @@ const response_formatter = require('./middlewares/response_formatter');
 const request_formatter = require('./middlewares/request_formatter');
 app.use(request_formatter);
 app.use(response_formatter);
-app.use(index.routes(), index.allowedMethods())
+app.use(person.routes(), person.allowedMethods())
+app.use(personProject.routes(), personProject.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 

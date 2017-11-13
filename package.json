@@ -9,6 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@zz-nodejs/koa-cas": "^2.0.1",
+    "@zz-nodejs/node-bsp": "^1.1.7",
     "crypto": "^1.0.1",
     "debug": "^2.6.3",
     "koa": "^2.2.0",
