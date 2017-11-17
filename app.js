@@ -10,7 +10,7 @@ const logger = require('koa-logger')
 const session = require('koa-generic-session')
 const MongoStore = require('koa-generic-session-mongo');
 const person = require('./routes/person')
-const users = require('./routes/users')
+const personApi = require('./routes/personApi')
 const personProject = require('./routes/personProject')
 
 const cas = require('@zz-nodejs/koa-cas').newSingleInstance({isTest: true})
@@ -141,7 +141,7 @@ app.use(request_formatter);
 app.use(response_formatter);
 app.use(person.routes(), person.allowedMethods())
 app.use(personProject.routes(), personProject.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(personApi.routes(), personApi.allowedMethods())
 
 
 

@@ -14,10 +14,7 @@ let personProjectSchema = new mongoose.Schema({
           menuId: Number,
           children:[
             {
-              apiName: String,
-              url: String,
-              apiUrl: String,
-              desc: String,
+              apiName: String
             }
           ]
         }
