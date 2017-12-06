@@ -31,7 +31,11 @@ let personApiSchema = new mongoose.Schema({
       request: [
         {
           key: String,
-          value: String,
+          value: {},
+          content: String,
+          valueMust: String,
+          desc: String,
+          typeValue: String,
         }
       ],
       responseRadio:{

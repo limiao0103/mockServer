@@ -1,6 +1,6 @@
 let router = require('koa-router')();
 let personController = require('../controllers/person.js');
-router.get('/', async (ctx, next) => {
+router.get('/', async (ctx) => {
   await ctx.render('index', {
     title: '接口测试'
   })

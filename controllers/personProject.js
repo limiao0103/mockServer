@@ -35,6 +35,7 @@ module.exports = {
       }
 
   },
+
   async createApi(ctx)  {
       let projectId =  ctx.request.body.projectId
       //选择目录
@@ -73,7 +74,16 @@ module.exports = {
         //创建api
         let newApi = Object.assign({},
           { apiId },
-          { request: { key: '' , value: '' } },
+          {
+            request: {
+              key:'',
+              typeValue:"String",
+              content:'',
+              valueMust:"必须",
+              desc:'',
+              value:null
+              }
+            },
           { response: { key: '' , value: '' } },
           Object.create(Object.getPrototypeOf(ctx.request.body))
           ,ctx.request.body

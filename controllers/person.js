@@ -1,8 +1,5 @@
 const personModel = require('../model/person')
 
-
-
-
 module.exports = {
   async create (ctx) {
       let params = Object.assign(
@@ -12,7 +9,6 @@ module.exports = {
       let newParams = Object.assign({},
         Object.create(Object.getPrototypeOf(params))
         ,params);
-
       delete newParams._id
       try{
         if (ctx.request.body._id) {
@@ -40,7 +36,8 @@ module.exports = {
         console.log(e)
       }
   },
-  async list(ctx, next)  {
+
+  async list(ctx)  {
      let params = Object.assign(
         ctx.userId
      )
@@ -52,7 +49,8 @@ module.exports = {
        console.log(e)
      }
  },
- async modify(ctx, next)  {
+
+ async modify(ctx)  {
      let params = Object.assign(
         ctx.userId,
         ctx.request.body
@@ -65,7 +63,8 @@ module.exports = {
        console.log(e)
      }
  },
- async delete(ctx, next)  {
+
+ async delete(ctx)  {
      let params = Object.assign(
         ctx.request.body
      )
@@ -77,5 +76,4 @@ module.exports = {
        console.log(e)
      }
  }
-
 }

@@ -8,7 +8,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-generic-session')
-const MongoStore = require('koa-generic-session-mongo');
+const MongoStore = require('koa-generic-session-mongo')
 const person = require('./routes/person')
 const personApi = require('./routes/personApi')
 const personProject = require('./routes/personProject')
@@ -40,6 +40,7 @@ bsp.getUsersByUserName('wangshu02')
 .catch(err => {
   console.error(err)
 })
+
 // app.use(async function (ctx, next) {
 //       console.log(ctx)
 //       // 处理单一登出。
