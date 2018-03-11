@@ -14,7 +14,7 @@ const personApi = require('./routes/personApi')
 const personProject = require('./routes/personProject')
 
 const cas = require('@zz-nodejs/koa-cas').newSingleInstance({isTest: true})
-const bsp = require('@zz-nodejs/node-bsp').newSingleInstance({isTest: true, appKey: 'xxx', appSecret: 'xxxx'})
+//const bsp = require('@zz-nodejs/node-bsp').newSingleInstance({isTest: true, appKey: 'xxx', appSecret: 'xxxx'})
 
 /**
  * md5 加密字符串
@@ -33,21 +33,21 @@ app.use(session({
   key:'test.58.nodejs.koa.cas',
 }));
 
-bsp.getUsersByUserName('wangshu02')
-.then(user => {
-  console.log(user)
-})
-.catch(err => {
-  console.error(err)
-})
+// bsp.getUsersByUserName('zhangzhen09')
+// .then(user => {
+//   console.log(user,'hellp')
+// })
+// .catch(err => {
+//   console.error(err)
+// })
 
 // app.use(async function (ctx, next) {
-//       console.log(ctx)
 //       // 处理单一登出。
 //       // 如果有用户在其他应用登出，CAS服务会通知当前服务。会返回用户登录的 ticket。
 //       let logoutTicket = await cas.handleSingleSignout(ctx)
 //       let sessionUser = ctx.session.user
-//       let reqURL = url.parse(ctx.url, true)
+//       let reqURL = url.parse(ctx.url, true) 
+    
 //       delete reqURL.query.ticket
 //       let service = url.format({
 //         protocol: ctx.protocol || 'http',
@@ -55,26 +55,26 @@ bsp.getUsersByUserName('wangshu02')
 //         pathname: reqURL.pathname,
 //         query: reqURL.query
 //       })
-//
+
 //       // 如果有退出的 ticket，销毁对应 ticket 用户session
 //       if (logoutTicket) {
 //         await ctx.sessionStore.destroy(MD5(logoutTicket))
 //         return (ctx.status = 200)
 //       }
-//
+
 //       // 用户已经登录
 //       if (sessionUser) {
 //         await next()
 //         return
 //       }
-//
+
 //       try {
 //         // 重定向到CAS服务器登录
 //         let authResult = await cas.authenticate(ctx)
 //         if (!authResult) {
 //           return (ctx.body = 'Cas authenticate authResult Error')
 //         }
-//
+
 //         /*
 //         authResult: {
 //           status: Boolean,
@@ -101,12 +101,11 @@ bsp.getUsersByUserName('wangshu02')
 //         let extended = authResult.extended
 //         let ticket = extended.ticket
 //         let user = Object.assign({}, extended.attributes, {username})
-//
 //         ctx.session.ticket = ticket
 //         ctx.session.user = user
-//
+//         console.log(user,'ctx')
 //         ctx.sessionId = MD5(ctx.session.ticket)
-//
+
 //         return ctx.redirect(service)
 //       } catch (err) {
 //         console.log('userAuth error : ', err)
